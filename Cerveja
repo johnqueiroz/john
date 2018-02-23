@@ -6,32 +6,32 @@ public class Principal {
 	public static void main(String[] args) {
 		
 					int aceita,quantidade;
-					int cerveja=99;
+					int cerva=99;
 					Scanner ler = new Scanner(System.in);				
 					while(true) {
-						while(cerveja!=0){
-						System.out.print(cerveja);
-						System.out.println(" cervejas no freezer.");
+						while(cerva!=0){
+						System.out.print(cerva);
+						System.out.println(" cervejas na geladeira.");
 						System.out.println("Pego uma garrafa, passo pra frente.");
-						cerveja= cerveja -1;
-						System.out.println("agora são " + cerveja + " cervejas no freezer.");
+						cerva= cerva -1;
+						System.out.println("agora são " + cerva + " cervejas na geladeira.");
 					}
-						if(cerveja==0){
-							System.out.println("quer comeca de novo?. sim=1/nao=0");
+						if(cerva==0){
+							System.out.println("quer comecar de novo?. sim=1/nao=0");
 							}
 						aceita = ler.nextInt();
 							
 						if(aceita==1){
-								System.out.println("quantas?");
-								quantidade = ler.nextInt();
-								while(cerveja<quantidade){
-									System.out.print(cerveja);
-									System.out.println(" cervejas no freezer.");
-									cerveja=cerveja+1;
+								System.out.println("quer quantas?");
+								quantas = ler.nextInt();
+								while(cerva<quantas){
+									System.out.print(cerva);
+									System.out.println(" cervejas na geladeira.");
+									cerva=cerva+1;
 									}
 						}
 						if(aceita==0){
-							System.out.println("so amanha agr ne?!!! kkkkk");
+							System.out.println("acabou !!");
 							break;
 						}
 					}
