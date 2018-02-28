@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Questao5 {
+	public static void main(String[] args) {
+		
+		Scanner ler = new Scanner (System.in);
+		
+		float gasolina, conta;
+		int refrigerante;
+		
+		System.out.println("Preços: Refrigerante - 3,00R$ Litro de gasolina - 2,50R$");
+		System.out.println("Informe quantos litros de gasolina foram necessários para abastercer o veiculo");
+		gasolina = ler.nextFloat();
+		
+		gasolina = (float) (gasolina * 2.5);
+		
+		System.out.println("E quantos refrigerantes comprou? ");
+		refrigerante = ler.nextInt();
+		
+		refrigerante = (int) (refrigerante * 3 );
+		
+		 conta = gasolina + refrigerante;
+		 
+		 System.out.println("A conta do cliente foi de " + conta + " reais!!!");
+		
+		
+		
+	}
+}
