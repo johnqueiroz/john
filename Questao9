@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class Questao_9 {
+	public static void main(String[] args) {
+		
+		String nome;
+		float sexo,peso=0,idade=0,altura=0;
+		int mulheres_altura=0;
+		float soma_mas=0,soma_idade=0,media_mas=0;
+		int pacientes=0;
+		int quantidade_idade=0;
+		float idade_maior=0;
+		float mulher_baixa=100;
+		String nome_maior = "";
+		String nome_baixo="";
+		Scanner ler = new Scanner(System.in);
+		
+		System.out.println("digite 'fim' quando pedir o nome para fechar o programa!!! ");
+		//repetição
+		while(true) {
+			//pedi dados
+			System.out.println("digite seu nome:");
+			nome = ler.next();
+			
+			//fechar o programa
+			if(nome.contains("fim")) {
+				System.out.println("fim do programa");
+				break;
+			}
+			
+			System.out.println("informe seu sexo(mas-1/fem-2):");
+			sexo = ler.nextFloat();
+			System.out.println("qual sua idade:");
+			idade = ler.nextFloat();
+			System.out.println("E a altura:");
+			altura = ler.nextFloat();
+			System.out.println("informe seu peso:");
+			peso = ler.nextFloat();
+			
+			//numero de pacientes
+			pacientes = pacientes + 1;			
+			System.out.println("quantidade de parcientes é: " + pacientes);
+			
+			//media de idade dos homens
+			if(sexo==1) {
+				
+				soma_mas = soma_mas + 1;
+				soma_idade = idade + soma_idade;
+				media_mas = soma_idade/soma_mas;
+			}			
+			System.out.println("media da idade dos homens: " + media_mas );
+			
+			//numero de mulheres entre 1,60 a 1,70
+			if(sexo==2 && (altura>=1.60 || altura<=1.70) && peso>70) {
+				mulheres_altura = mulheres_altura+1;
+				}
+			System.out.println("A quantidade de mulheres entre 1,60 a 1,70 e acima de 70KG: " + mulheres_altura);
+			
+			//quantidade de pessoas entre 18 a 25
+			if(idade>=18 && idade<=25) {				
+				quantidade_idade = quantidade_idade+1;				
+			}
+			System.out.println("a quantidade de pessoa entre 18 a 25 é: " + quantidade_idade);
+			
+			
+			//o nome do paciente mais velho
+			
+			if(idade_maior<=idade) {
+				idade_maior=idade;
+				nome_maior=nome;
+				
+			}
+			System.out.println("maior idade é de: " + nome_maior + " " + (int) idade_maior + " anos");
+			
+			//nome da mulher mais baixa
+			
+			
+			if(sexo==2 && mulher_baixa>=altura ) {
+				mulher_baixa=altura;
+				nome_baixo=nome;
+			}
+			System.out.println("O nome da mulher mais baixa é: " + nome_baixo);
+				
+		}
+		ler.close();
+	}
+}
