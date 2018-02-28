@@ -1,0 +1,28 @@
+package salarioEmpresarial;
+
+import java.util.Scanner;
+
+public class Executavel {
+	public static void main(String[] args) {
+		
+		int numero,i=0;
+		Scanner ler = new Scanner(System.in);
+		System.out.println("digite 10 numeros e descubra se ele é par ou impar:");
+		while(i!=10){
+			
+			numero=ler.nextInt();
+			if(numero % 2 == 0){
+				System.out.println(numero +" ele é par");
+			}else{
+				System.out.println(numero +" ele é impar");
+			}
+			i=i+1;
+			
+		}
+		
+		
+		
+		ler.close();
+	}
+	
+}
