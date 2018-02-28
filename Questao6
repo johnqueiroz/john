@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Questao6 {
+	public static void main(String[] args) {
+		
+		Scanner ler = new Scanner (System.in);
+		
+		float salario, prestação;
+		
+		System.out.println("Informe o seu salario bruto: ");
+		salario = ler.nextFloat();
+		
+		System.out.println("Informe a prestação: ");
+		prestação = ler.nextFloat();
+		
+		float limiteDeEmprestimo = (float) (salario * 0.3);
+		
+		if(prestação > limiteDeEmprestimo) {
+			System.out.println("O emprestimo não pode ser concedido !!");
+			
+		}else {
+			System.out.println("Parabéns, seu empréstimo foi concedido!");
+		}
+	}
+}
