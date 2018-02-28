@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Questao8 {
+	public static void main(String[] args) {
+		Scanner ler = new Scanner (System.in);
+		
+		int  dias;
+		String cliente;
+		double valorConta;
+		double total = 0;
+		
+		while(true) {
+			System.out.println("Informe seu nome: ");
+			cliente = ler.next();
+			
+			System.out.println("Quantos dias voce deseja passar na pousada? ");
+			dias = ler.nextInt();
+			
+			if (dias < 10) {
+				valorConta = (int) (dias * 15);
+				System.out.println("Cliente " + cliente + " o valor da sua conta de quarto é de: "+ (valorConta +(40 * dias)));
+				
+				
+			}else {
+				valorConta = (int) (dias * 8);
+				System.out.println("Cliente " + cliente + " o valor da sua conta de quarto é de: "+ (valorConta +(40 * dias)));
+				
+				
+			}
+			total = valorConta + (40 * dias) + total;
+			
+			System.out.println("Total arrecadado por a pousada foi de "+ total);
+		}
+		
+	}
+}
