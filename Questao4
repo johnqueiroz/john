@@ -1,0 +1,35 @@
+package atividade3;
+
+import java.util.Scanner;
+
+public class ReajusteDeSalario {
+	public static void main(String[] args) {
+		
+		double salario,reajuste,novosalario,opcao;
+		Scanner ler = new Scanner(System.in);
+		
+		
+		while(true) {
+			
+			System.out.println("digite o valor do salario para ver se tem reajuste ou n:");
+			
+			salario = ler.nextDouble();
+			reajuste = salario*0.2;
+			novosalario = salario + reajuste;
+			
+			if(salario<500) {
+				System.out.println("O novo salario com reajuste é: " + novosalario);
+				
+			}else {
+				System.out.println("O funcionário não tem esse direito!!!");
+			}
+			System.out.println("deseja saber se outro funcionário pode ter o reajuste e quanto fica? digite - 1(sim)/0(não) ");
+			opcao = ler.nextDouble();
+			if(opcao==0) {
+				System.out.println("fim de programa");
+				break;
+			}
+			}
+		ler.close();
+	}
+}
