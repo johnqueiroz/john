@@ -1,0 +1,25 @@
+package salarioEmpresarial;
+
+import java.util.Scanner;
+
+public class Executavel {
+	public static void main(String[] args) {
+		
+		float salario,aumento;
+		Scanner ler = new Scanner(System.in);
+		
+		
+		
+		System.out.println("digite o seu salário:");
+		salario = ler.nextFloat();
+		System.out.println("digite o aumento sem '%':");
+		aumento = ler.nextFloat();
+		aumento = salario*(aumento/100);
+		salario = salario+aumento;
+		System.out.println("o valor do aumento é:" + aumento);
+		System.out.println("o valor do novo salério é:" + salario);
+		
+		ler.close();
+	}
+	
+}
