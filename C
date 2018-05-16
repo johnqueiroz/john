@@ -1,0 +1,215 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
+
+// Tipo base dos elementos da lista 
+typedef struct elementos {
+    char placa[50];
+} t_elemento;
+
+typedef struct no {
+    t_elemento dado;
+    struct no * prox;
+} t_no;
+
+typedef struct fila {
+    t_no* inicio;
+    int quant_element;
+    t_no* final;
+} t_fila;
+
+/**
+ * Cria uma fila vazia, ou seja um no cabeca.
+ * inicializa os ponteiros ini e fim para NULL,
+ * e seta quant_element para zero.
+ * 
+ * @return no cabeca alocado e inicializado
+ */
+t_fila * criaCabeca ()
+{
+    t_fila * fila = (t_fila*) malloc(sizeof(t_fila));
+
+    if (fila) {
+        fila->inicio = fila->final = NULL;
+        fila->quant_element=0;
+    }
+
+    return fila;
+}
+
+	t_fila * prim_fila = criaCabeca();
+	t_fila * segun_fila = criaCabeca();
+
+/**
+ * Cria um novo no, aloca a sua regiao de memoria,
+ * inicializa o ponteiro prox, e retorna o ponteiro para a pilha criada.
+ * 
+ * @return No alocada e inicializada
+ */
+t_no * criaNo() {
+    t_no * no = (t_no*) malloc(sizeof(t_no));
+
+    // verifica se houve memoria suficiente para alocar
+    if (no)
+        no->prox = NULL;
+
+    return no;
+}
+
+/**
+ * Verifica se a fila esta vazia ou nao. Isto so acontece quando ela eh nula
+ * 
+ * @param fila ponteiro para a fila
+ *
+ * @return Verdadeiro (1) se a fila estiver vazia, ou falso (0) caso contrario.
+ */
+int isVazia (t_fila * fila)
+{
+    return (fila->quant_element == 0);
+}
+
+/**
+ * Insere um elemento (valor) no fim da fila.
+ * 
+ * @param fila ponteiro para a fila
+ * @param valor  elemento a ser inserido na fila
+ *
+ * @return Falso(0) se a fila estiver cheia, caso contrario, retorna Verdadeiro(1).
+ */
+int inserir (t_fila *fila, t_elemento valor) {
+    t_no *novo;
+    novo = criaNo();
+    if (novo == NULL)
+        return 0; // Erro: memoria insuficiente
+    novo->dado = valor;
+    if (isVazia(fila))
+        fila->inicio = novo;
+    else
+        (fila->final)->prox = novo;
+    fila->final = novo;
+    fila->quant_element++;
+    return 1;
+}
+
+/**
+ * Remove um elemento do inicio da fila.
+ * 
+ * @param fila ponteiro para a fila, a fila ja deve ter sido inicializada
+ *
+ * @return o elemento removido.
+ */
+t_elemento remover (t_fila *fila)
+{
+    t_no *aux;
+    t_elemento valor = { "" } ;
+    if (isVazia(fila))
+        return valor; // Erro: fila vazia 
+    valor = (fila->inicio)->dado;
+    if (fila->inicio == fila->final)
+        fila->final = NULL;
+    aux = fila->inicio;
+    fila->inicio = (fila->inicio)->prox;
+    free(aux);
+    fila->quant_element--;
+    return valor;
+}
+
+void inserir_fila(int numero){
+		
+	t_elemento elemento;
+	
+	if(numero==0)printf("\n Nao adicionou nada\n");
+	
+	if(numero==1){
+		
+		printf("\nDigite a placa: \n");
+		
+		scanf("%s",elemento.placa);
+		
+		inserir(prim_fila,elemento);
+		
+		printf("Adicionou na fila1\n");
+	}
+	if(numero==2){		
+		printf("\nDigite a placa: \n");
+		
+		scanf("%s",elemento.placa);
+		
+		inserir(segun_fila,elemento);
+		
+		printf("Adicionou na fila2\n");
+	}
+}
+
+void imprimir_status(t_fila * primeira_fila,t_fila * segunda_fila,bool primeiro_sinal,bool segundo_sinal){
+	
+	printf("A quantidade de carros na primeira fila e :%d \n",primeira_fila->quant_element);
+	
+	printf("A quantidade de carros na segunda fila e :%d \n",segunda_fila->quant_element);
+	
+	
+	if(primeiro_sinal){
+		printf(" O primeiro sinal esta aberto\n");
+	}else{
+		printf("O primeiro sinal esta fechado\n");
+	}
+	if(segundo_sinal){
+		printf("O segundo sinal esta aberto\n");
+	}else{
+		printf("O segundo sinal esta fechado\n");
+	}
+}
+
+void menu(){
+	printf("ALUNO: John Emerson Ferreira Regis Filho\nDISCIPLINA: ESTRUTURA DE DADOS I\nPROFESSOR: WALACE BONFIM");
+}
+
+int main (){
+	int i=0,tes;	
+	bool primeiro_sinal = true, segundo_sinal = false, testando=true;
+	
+	menu();
+	
+	
+	while(true){
+		
+		srand(time(NULL));		
+		
+		if(testando==true)tes = rand() % 3;
+		testando=true;		
+		
+		inserir_fila(tes);
+		imprimir_status(prim_fila,segun_fila,primeiro_sinal,segundo_sinal);
+		
+		
+		if(primeiro_sinal==true){
+			
+			remover(prim_fila);
+			
+			printf("Removeu da primeira fila\n\n");
+		}
+		
+		if(segundo_sinal==true){
+			
+			remover(segun_fila);
+			
+			printf("Removeu da segunda fila\n\n");
+		}
+		
+		if(tes==0){
+			
+		tes = 1 + rand() % 2;
+		
+		testando=false;	
+	}
+		
+	i++;
+	if(i==10){	
+		primeiro_sinal= !primeiro_sinal;
+		
+		segundo_sinal= !segundo_sinal;
+		i=0;
+	}	
+}
+}
